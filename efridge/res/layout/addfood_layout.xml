@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+
+// aat issue #6 : 9/23/2012
+// calendarActivity layout was created 
+
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#dab846" >
+    
+    <include
+        android:id="@+id/includeTabLayout"
+        layout="@layout/tab_layout" />
+    
+</LinearLayout>

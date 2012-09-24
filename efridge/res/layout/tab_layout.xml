@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+// aat issue #2 : 9/23/2012
+// Tab layout was created 
+
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:background="#123abd"
+    android:orientation="horizontal" >
+
+    <Button
+        android:id="@+id/calendarTab"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="@string/calendarTabStr"
+        android:background="#c7c7c7"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/myFridgeTab"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="@string/myFridgeTabStr"
+        android:background="#c7c7c7"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/settingTab"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:text="@string/settingTabStr"
+        android:background="#c7c7c7"
+        android:textColor="#000000" />
+
+</LinearLayout>

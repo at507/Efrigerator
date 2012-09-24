@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+// aat issue #5 : 9/23/2012
+// Setting layout was created 
+
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/includeTabLayout"
+        layout="@layout/tab_layout" />
+
+</LinearLayout>
