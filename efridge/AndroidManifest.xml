@@ -25,12 +25,6 @@
             </intent-filter>
         </activity>
         
-                <!-- Calendar -->
-<!--          <activity
-            android:name=".CalendarActivity"
-            android:theme="@android:style/Theme.Light.NoTitleBar"
-            android:noHistory="true" /> -->
-        
         <!-- My Fridge Activity -->
         <activity
             android:name=".MyFridgeActivity"

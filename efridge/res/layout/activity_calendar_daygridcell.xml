@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  
+
+// aat issue #1 : 9/24/2012
+// Added fully functional calendar to activity
+// This file contains layout for each cell in grid which displays date
+
+-->
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:gravity="fill_horizontal">
+
+	<Button
+		android:id="@+id/day_gridcell"
+		android:background="@drawable/activity_calendar_buttonaction"
+		android:layout_gravity="center"
+		android:textColor="#FFFFFF"
+		android:textAppearance="@android:attr/textAppearanceLarge"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textSize="20dip"
+		>
+		
+	</Button>
+	
+</LinearLayout>
+    

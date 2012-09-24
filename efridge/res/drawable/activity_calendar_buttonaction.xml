@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  
+
+// aat issue #1 : 9/24/2012
+// Calendar
+// calendarActivity was created and it is assigned as launcher 
+// This xml provides button action for each button in calendar
+
+-->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+  
+  
+    
+    <item android:state_enabled="true" 
+     android:state_pressed="true" android:drawable="@drawable/activity_calendar_button" />
+   
+    
+    <item android:state_enabled="true"
+     android:drawable="@drawable/activity_calendar_buttonpressed" />
+
+</selector>
