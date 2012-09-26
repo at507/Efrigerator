@@ -12,4 +12,6 @@
     <string name="myFridgeHeaderStr">My Fridge</string>
     <string name="addFoodStr">Add</string>
     <string name="editFoodStr">Edit</string>
+    
+    <string name="delBtnStr">Del</string>
 </resources>
