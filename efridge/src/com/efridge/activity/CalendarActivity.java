@@ -1,7 +1,13 @@
-// rat issue #1 : 9/23/2012
-// Just created this activity
+// aat issue #1 : 9/28/2012
+// added tiny icon at the top of each date in calendar
+// right now this icon is only visible for today's date
+// But in future, we need to set it for date which will be expiry 
+// date of some product
 // aat issue #1 : 9/24/2012
 // Added fully functional calendar to activity
+// rat issue #1 : 9/23/2012
+// Just created this activity
+
 
 package com.efridge.activity;
 
@@ -28,6 +34,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -293,7 +300,10 @@ public class CalendarActivity extends BaseActivity implements OnClickListener {
 
 							if(this.month == currentMonth)
 							{
+								ImageView Iw = (ImageView)row.findViewById(R.id.expirydateId);
+								Iw.setVisibility(View.VISIBLE);
 								gridcell.setTextColor(Color.BLUE);
+								//(ImageView)findViewById(R.id.expirydateId).setVisibility(1);
 						
 							}
 						}

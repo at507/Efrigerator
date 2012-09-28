@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--  
-
+// aat issue #1 : 9/28/2012
+// added tiny icon at the top of each date in calendar
+// right now this icon is only visible for today's date
+// But in future, we need to set it for date which will be expiry 
+// date of some product
 // aat issue #1 : 9/24/2012
 // Added fully functional calendar to activity
 // This file contains layout for each cell in grid which displays date
 
 -->
-<LinearLayout
+<RelativeLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical"
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
-	android:gravity="fill_horizontal">
-
+	android:gravity="fill_horizontal"
+	
+	 >
+ 	 
+    
 	<Button
 		android:id="@+id/day_gridcell"
 		android:background="@drawable/activity_calendar_buttonaction"
@@ -22,9 +29,24 @@
 		android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:textSize="20dip"
+		
+		
 		>
 		
 	</Button>
+    <ImageView
+        android:id= "@+id/expirydateId"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:layout_alignRight="@+id/day_gridcell"
+        android:layout_alignTop="@+id/day_gridcell"
+        android:src="@drawable/asteroid01"
+         android:visibility="invisible"      
+     >
+    
+</ImageView>
 	
-</LinearLayout>
+	   
+	
+</RelativeLayout>
     
