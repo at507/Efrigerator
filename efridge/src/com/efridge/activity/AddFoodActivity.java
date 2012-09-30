@@ -4,6 +4,8 @@
 // Add food screen allow user to store food in efridge
 // rat issue #6 : 9/29/2012
 // Click save button to store food in efridge
+// rat issue #7 : 9/29/2012
+// Database handling
 
 package com.efridge.activity;
 
@@ -39,6 +41,7 @@ public class AddFoodActivity extends BaseActivity {
 				
 				foodModel.saveToDb();
 				setMessage();
+				
 			}
 		});
 	}
