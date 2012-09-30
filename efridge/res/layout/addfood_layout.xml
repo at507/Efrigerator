@@ -1,18 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-
+<!--
 // aat issue #6 : 9/23/2012
 // calendarActivity layout was created 
-
 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:background="#dab846" >
-    
+    android:orientation="vertical" >
+
     <include
         android:id="@+id/includeTabLayout"
         layout="@layout/tab_layout" />
+
+    <TextView 
+        android:id="@+id/msgStr"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:textColor="#000000" />
     
+    <ImageView
+        android:id="@+id/foodImage"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:background="#123fda"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:contentDescription="@string/foodImageContentDescriptionStr" />
+
+    <LinearLayout
+        android:id="@+id/expiryLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" >
+
+        <TextView
+            android:id="@+id/expDateLable"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:text="@string/expDateLabelStr"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/expDate"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:paddingLeft="40dp"
+            android:text="Sep 27th, 2012"
+            android:textColor="#000000" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/foodNameLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" >
+
+        <TextView
+            android:id="@+id/foodNameLable"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:text="@string/foodNameLabelStr"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/foodNameEdit"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="30dp"
+            android:inputType="text|textNoSuggestions" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/foodDescriptionLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp" >
+
+        <TextView
+            android:id="@+id/foodDescriptionLable"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:paddingLeft="50dp"
+            android:text="@string/foodDescriptionLabelStr"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/foodDescriptionEdit"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginRight="30dp"
+            android:inputType="text|textNoSuggestions" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/butLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <Button
+            android:id="@+id/saveBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:text="@string/saveBtnStr"
+            android:background="#c5c5c5" />
+    </LinearLayout>
+
 </LinearLayout>

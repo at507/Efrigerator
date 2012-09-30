@@ -1,13 +1,19 @@
 // rat issue #6 : 9/23/2012
 // Just created this activity
+// rat issue #3 : 9/29/2012
+// Display all foods
+// rat issue #3 : 9/29/2012
+// User can remove food from efrige
 
 package com.efridge.activity;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +23,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.efridge.model.FoodModel;
 
 public class MyFridgeActivity extends BaseActivity {
 
@@ -29,8 +37,21 @@ public class MyFridgeActivity extends BaseActivity {
 		setContentView(R.layout.myfridge_layout);
 		super.onCreate(savedInstanceState);
 
+		List<FoodModel> foods = FoodModel.getFoods();
+		ListView foodListView = (ListView) findViewById(R.id.foodsList);
+
+		foodListAdapter = new FoodListAdapter(foods);
+		foodListView.setAdapter(foodListAdapter);
+		
+		if(foods.size() == 0){
+			
+			Intent intent = new Intent(MyFridgeActivity.this, AddFoodActivity.class);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+			this.startActivity(intent);
+		}
+		
 		Button addFoodBtn = (Button) findViewById(R.id.addFoodBtn);
-		Button editFoodBtn = (Button) findViewById(R.id.editFoodBtn);
+		final Button editFoodBtn = (Button) findViewById(R.id.editFoodBtn);
 
 		addFoodBtn.setOnClickListener(new OnClickListener() {
 
@@ -49,32 +70,24 @@ public class MyFridgeActivity extends BaseActivity {
 				ImageButton delBtn = (ImageButton) findViewById(R.id.delBtn);
 				isDelVisible = !isDelVisible;
 
-				System.out.println("delBtn : " + delBtn);
-				if (isDelVisible)
+				if (isDelVisible) {
 					delBtn.setVisibility(View.VISIBLE);
-				else
+					editFoodBtn.setText("Cancel");
+				} else {
 					delBtn.setVisibility(View.INVISIBLE);
+					editFoodBtn.setText("Edit");
+				}
 				
 				foodListAdapter.notifyDataSetChanged();
 			}
 		});
-
-		List<String> foods = new ArrayList<String>();
-
-		for (int i = 0; i < 10; i++) {
-			foods.add("Chicken");
-		}
-
-		ListView foodListView = (ListView) findViewById(R.id.foodsList);
-		foodListAdapter = new FoodListAdapter(foods);
-		foodListView.setAdapter(foodListAdapter);
 	}
 
 	class FoodListAdapter extends BaseAdapter {
 
-		List<String> foodList;
+		List<FoodModel> foodList;
 
-		FoodListAdapter(List<String> foodList) {
+		FoodListAdapter(List<FoodModel> foodList) {
 			this.foodList = foodList;
 		}
 
@@ -102,8 +115,10 @@ public class MyFridgeActivity extends BaseActivity {
 			LayoutInflater inflater = getLayoutInflater();
 			View row = inflater.inflate(R.layout.foodlist_layout, parent, false);
 
+			FoodModel food = this.foodList.get(position);
+
 			TextView foodView = (TextView) row.findViewById(R.id.food);
-			foodView.setText(this.foodList.get(position));
+			foodView.setText(food.getFoodName());
 
 			ImageButton delButton = (ImageButton) row.findViewById(R.id.delBtn);
 			if (isDelVisible) {
@@ -112,6 +127,36 @@ public class MyFridgeActivity extends BaseActivity {
 			} else {
 				delButton.setVisibility(View.INVISIBLE);
 			}
+			
+			final long foodId = food.getFoodId();
+			final int foodIndex = position;
+			ImageButton delBtn = (ImageButton) row.findViewById(R.id.delBtn);
+			
+			delBtn.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+
+					AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(v.getContext());
+					alertDialogBuilder.setTitle("Remove Food");
+					alertDialogBuilder.setMessage("Are you sure?");
+				
+					alertDialogBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+				          public void onClick(DialogInterface dialog, int which) {
+				     
+				        	  FoodModel.deleteFood(foodId);
+				        	  foodList.remove(foodIndex);
+				        	  foodListAdapter.notifyDataSetChanged();
+				        } });
+				    	
+					alertDialogBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+				          public void onClick(DialogInterface dialog, int which) {
+				     
+				        	  Log.v("---  ", " Food not removed.");
+				        } });
+				    
+					alertDialogBuilder.show();
+				}
+			});
 			return row;
 		}
 	}

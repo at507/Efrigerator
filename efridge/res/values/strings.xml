@@ -14,4 +14,11 @@
     <string name="editFoodStr">Edit</string>
     
     <string name="delBtnStr">Del</string>
+    <string name="saveBtnStr">Save</string>
+    
+    <string name="foodDescriptionLabelStr">Description</string>
+    <string name="foodNameLabelStr">Food</string>
+    <string name="expDateLabelStr">Expiry Date</string>
+    
+    <string name="foodImageContentDescriptionStr">Food Image</string>
 </resources>
