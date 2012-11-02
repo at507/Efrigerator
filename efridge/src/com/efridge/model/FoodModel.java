@@ -49,18 +49,46 @@ public class FoodModel {
 	}
 
 	public boolean saveToDb() {
-		SQLiteDatabase db = DbHelper.sharedDbHelper().getWritableDatabase();
-
-		db.beginTransaction();
 
 		boolean transactionSucceeded = false;
+		
+		SQLiteDatabase db = DbHelper.sharedDbHelper().getWritableDatabase();
+		db.beginTransaction();
 
 		try {
+			
 			FoodDao foodDao = new FoodDao(db);
 			foodDao.insertFood(this);
 
 			db.setTransactionSuccessful();
 			transactionSucceeded = true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			Log.e("Error", e.getMessage());
+		} finally {
+			db.endTransaction();
+			db.close();
+		}
+
+		return transactionSucceeded;
+	}
+	
+	public boolean updateFoodDetails() {
+		
+		boolean transactionSucceeded = false;
+		
+		SQLiteDatabase db = DbHelper.sharedDbHelper().getWritableDatabase();
+		db.beginTransaction();
+
+		try {
+			
+			FoodDao foodDao = new FoodDao(db);
+			foodDao.updateFoodDetails(this);
+
+			db.setTransactionSuccessful();
+			transactionSucceeded = true;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			Log.e("Error", e.getMessage());
@@ -76,11 +104,22 @@ public class FoodModel {
 
 		SQLiteDatabase db = DbHelper.sharedDbHelper().getReadableDatabase();
 		FoodDao foodDao = new FoodDao(db);
-		List<FoodModel> foodList = foodDao.getLocations();
+		List<FoodModel> foodList = foodDao.getFoods();
 
 		db.close();
 
 		return foodList;
+	}
+	
+	public static FoodModel getFoodById(long foodId) {
+
+		SQLiteDatabase db = DbHelper.sharedDbHelper().getReadableDatabase();
+		FoodDao foodDao = new FoodDao(db);
+	
+		FoodModel food = foodDao.getFoodById(foodId);
+		db.close();
+
+		return food;
 	}
 	
 	public static void deleteFood(long id){

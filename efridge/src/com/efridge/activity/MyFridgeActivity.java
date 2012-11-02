@@ -18,6 +18,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -30,6 +32,7 @@ public class MyFridgeActivity extends BaseActivity {
 
 	boolean isDelVisible = false;
 	FoodListAdapter foodListAdapter;
+	private List<FoodModel> foods;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) { // TODO
@@ -37,11 +40,25 @@ public class MyFridgeActivity extends BaseActivity {
 		setContentView(R.layout.myfridge_layout);
 		super.onCreate(savedInstanceState);
 
-		List<FoodModel> foods = FoodModel.getFoods();
+		foods = FoodModel.getFoods();
 		ListView foodListView = (ListView) findViewById(R.id.foodsList);
 
 		foodListAdapter = new FoodListAdapter(foods);
 		foodListView.setAdapter(foodListAdapter);
+		
+		foodListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			
+				Intent intent = new Intent(MyFridgeActivity.this, ShowFoodDetailsActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+				intent.putExtra("foodId", foods.get(position).getFoodId());
+				
+				view.getContext().startActivity(intent);
+				
+			}
+		});
 		
 		if(foods.size() == 0){
 			
@@ -52,7 +69,6 @@ public class MyFridgeActivity extends BaseActivity {
 		
 		Button addFoodBtn = (Button) findViewById(R.id.addFoodBtn);
 		final Button editFoodBtn = (Button) findViewById(R.id.editFoodBtn);
-
 		addFoodBtn.setOnClickListener(new OnClickListener() {
 
 			public void onClick(View v) {
@@ -68,13 +84,17 @@ public class MyFridgeActivity extends BaseActivity {
 			public void onClick(View v) {
 
 				ImageButton delBtn = (ImageButton) findViewById(R.id.delBtn);
+				ImageButton editBtn = (ImageButton) findViewById(R.id.editBtn);
+				
 				isDelVisible = !isDelVisible;
 
 				if (isDelVisible) {
 					delBtn.setVisibility(View.VISIBLE);
+					editBtn.setVisibility(View.VISIBLE);
 					editFoodBtn.setText("Cancel");
 				} else {
 					delBtn.setVisibility(View.INVISIBLE);
+					editBtn.setVisibility(View.INVISIBLE);
 					editFoodBtn.setText("Edit");
 				}
 				
@@ -121,18 +141,21 @@ public class MyFridgeActivity extends BaseActivity {
 			foodView.setText(food.getFoodName());
 
 			ImageButton delButton = (ImageButton) row.findViewById(R.id.delBtn);
+			ImageButton editBtn = (ImageButton) row.findViewById(R.id.editBtn);
+			
 			if (isDelVisible) {
 
 				delButton.setVisibility(View.VISIBLE);
+				editBtn.setVisibility(View.VISIBLE);
 			} else {
 				delButton.setVisibility(View.INVISIBLE);
+				editBtn.setVisibility(View.INVISIBLE);
 			}
 			
 			final long foodId = food.getFoodId();
 			final int foodIndex = position;
-			ImageButton delBtn = (ImageButton) row.findViewById(R.id.delBtn);
 			
-			delBtn.setOnClickListener(new OnClickListener() {
+			delButton.setOnClickListener(new OnClickListener() {
 
 				public void onClick(View v) {
 
@@ -157,6 +180,19 @@ public class MyFridgeActivity extends BaseActivity {
 					alertDialogBuilder.show();
 				}
 			});
+			
+			editBtn.setOnClickListener(new OnClickListener() {
+
+				public void onClick(View v) {
+
+ 					Intent intent = new Intent(MyFridgeActivity.this, UpdateFoodDetailsActivity.class);
+					intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+					intent.putExtra("foodId", foods.get(foodIndex).getFoodId());
+					
+					v.getContext().startActivity(intent);
+				}
+			});
+			
 			return row;
 		}
 	}

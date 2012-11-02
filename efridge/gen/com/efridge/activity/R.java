@@ -39,42 +39,49 @@ public final class R {
         public static final int activity_calendar_buttonpressed=0x7f020002;
         public static final int asteroid01=0x7f020003;
         public static final int delete_btn=0x7f020004;
-        public static final int ic_action_search=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
+        public static final int edit_btn=0x7f020005;
+        public static final int ic_action_search=0x7f020006;
+        public static final int ic_launcher=0x7f020007;
     }
     public static final class id {
-        public static final int addFoodBtn=0x7f080019;
+        public static final int addFoodBtn=0x7f08001f;
         public static final int butLayout=0x7f08000f;
         public static final int calendar=0x7f080016;
-        public static final int calendarTab=0x7f08001d;
+        public static final int calendarTab=0x7f080023;
         public static final int day_cell=0x7f080002;
         public static final int day_gridcell=0x7f080000;
         public static final int daysofweek=0x7f080015;
-        public static final int delBtn=0x7f080018;
-        public static final int editFoodBtn=0x7f08001b;
+        public static final int delBtn=0x7f08001e;
+        public static final int editBtn=0x7f08001d;
+        public static final int editFoodBtn=0x7f080021;
         public static final int expDate=0x7f080008;
         public static final int expDateLable=0x7f080007;
         public static final int expiryLayout=0x7f080006;
         public static final int expirydateId=0x7f080001;
-        public static final int food=0x7f080017;
+        public static final int food=0x7f08001c;
         public static final int foodDescriptionEdit=0x7f08000e;
         public static final int foodDescriptionLable=0x7f08000d;
         public static final int foodDescriptionLayout=0x7f08000c;
+        public static final int foodDescription_details=0x7f08001a;
+        public static final int foodExpLable=0x7f080017;
         public static final int foodImage=0x7f080005;
         public static final int foodNameEdit=0x7f08000b;
         public static final int foodNameLable=0x7f08000a;
         public static final int foodNameLayout=0x7f080009;
-        public static final int foodsList=0x7f08001c;
+        public static final int foodName_details=0x7f080019;
+        public static final int foodScrollView=0x7f08001b;
+        public static final int foodexp_details=0x7f080018;
+        public static final int foodsList=0x7f080022;
         public static final int header=0x7f080011;
         public static final int includeTabLayout=0x7f080003;
-        public static final int menu_settings=0x7f080020;
+        public static final int menu_settings=0x7f080026;
         public static final int msgStr=0x7f080004;
-        public static final int myFridgeHeader=0x7f08001a;
-        public static final int myFridgeTab=0x7f08001e;
+        public static final int myFridgeHeader=0x7f080020;
+        public static final int myFridgeTab=0x7f080024;
         public static final int next=0x7f080014;
         public static final int previous=0x7f080012;
         public static final int saveBtn=0x7f080010;
-        public static final int settingTab=0x7f08001f;
+        public static final int settingTab=0x7f080025;
         public static final int title=0x7f080013;
     }
     public static final class layout {
@@ -82,10 +89,11 @@ public final class R {
         public static final int activity_calendar_daysofweek=0x7f030001;
         public static final int addfood_layout=0x7f030002;
         public static final int calendar_layout=0x7f030003;
-        public static final int foodlist_layout=0x7f030004;
-        public static final int myfridge_layout=0x7f030005;
-        public static final int setting_layout=0x7f030006;
-        public static final int tab_layout=0x7f030007;
+        public static final int fooddetails_layout=0x7f030004;
+        public static final int foodlist_layout=0x7f030005;
+        public static final int myfridge_layout=0x7f030006;
+        public static final int setting_layout=0x7f030007;
+        public static final int tab_layout=0x7f030008;
     }
     public static final class menu {
         public static final int main_layout=0x7f070000;

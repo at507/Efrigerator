@@ -37,11 +37,24 @@
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:noHistory="true" />
 
-                        <!-- Add Food -->
+         <!-- Add Food -->
           <activity
             android:name=".AddFoodActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:noHistory="true" />
+          
+          <!-- Food Details-->
+          <activity
+            android:name=".ShowFoodDetailsActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:noHistory="true" />
+          
+          <!-- Update Food Details-->
+          <activity
+            android:name=".UpdateFoodDetailsActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar"
+            android:noHistory="true" />
+          
     </application>
 
 </manifest>

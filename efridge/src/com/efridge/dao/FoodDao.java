@@ -25,7 +25,18 @@ public class FoodDao extends AbstractDao {
 		db.insertOrThrow("food_details", null, values);
 	}
 	
-	public List<FoodModel> getLocations() {
+	public void updateFoodDetails(FoodModel foodModel) throws SQLException {
+		ContentValues resetValue = new ContentValues();
+
+		resetValue.put("food_name", foodModel.getFoodName());
+		resetValue.put("food_description", foodModel.getFoodDescription());
+		resetValue.put("exp_date", foodModel.getExpiryDate());
+		
+		String  queryWhere = "food_id = " + foodModel.getFoodId(); 
+		db.update("food_details", resetValue, queryWhere, null);
+	}
+	
+	public List<FoodModel> getFoods() {
 		List<FoodModel> foodList = new ArrayList<FoodModel>();
 
 		String sql = "SELECT food_id, food_name, food_description, exp_date FROM food_details";
@@ -37,6 +48,20 @@ public class FoodDao extends AbstractDao {
 		cursor.close();
 
 		return foodList;
+	}
+	
+	public FoodModel getFoodById(long foodId) {
+		FoodModel food = null;
+
+		String sql = "SELECT food_id, food_name, food_description, exp_date FROM food_details WHERE food_id = " + foodId;
+		Cursor cursor = db.rawQuery(sql, null);
+
+		while (cursor.moveToNext()) {
+			food = foodsFromCursor(cursor);
+		}
+		cursor.close();
+
+		return food;
 	}
 	
 	private FoodModel foodsFromCursor(Cursor cursor) {
